@@ -48,37 +48,6 @@ $.ajaxSetup({
     }
 });
 
-// Session Inactivity Countdown Timer (30 minutes)
-(function initSessionTimer() {
-    let timeLeft = 30 * 60; // 30 minutes in seconds
-    const timerDisplay = $('#sessionTimerText');
-
-    if (timerDisplay.length === 0) return;
-
-    const interval = setInterval(function () {
-        timeLeft--;
-        if (timeLeft <= 0) {
-            clearInterval(interval);
-            timerDisplay.text('00:00');
-            showToast('Session terminated due to inactivity.', 'danger');
-            setTimeout(function () {
-                window.location.href = (window.APP_CONTEXT || '') + '/login.jsp?sessionExpired=true';
-            }, 1000);
-            return;
-        }
-
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        const formatted = String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
-        timerDisplay.text(formatted);
-
-        // Flash red when < 2 minutes remain
-        if (timeLeft < 120) {
-            timerDisplay.addClass('text-danger fw-bold');
-        }
-    }, 1000);
-})();
-
 // Mobile Sidebar Toggle and Logout Listeners
 $(document).ready(function () {
     // Mobile sidebar toggle

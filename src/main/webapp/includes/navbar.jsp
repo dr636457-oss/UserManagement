@@ -80,12 +80,6 @@
 
     <!-- Right Controls -->
     <div class="d-flex align-items-center gap-3">
-        <!-- Live Session Indicator with Pulse Dot -->
-        <div class="session-live-pill d-none d-sm-inline-flex" title="Session automatically terminates after 30 minutes of inactivity">
-            <span class="pulse-dot"></span>
-            <span>Session: <strong id="sessionTimerText" class="text-primary font-monospace">30:00</strong></span>
-        </div>
-
         <!-- Role Badge -->
         <span class="badge-aurora badge-role-<%= userRole.toLowerCase() %> d-none d-md-inline-flex">
             <%= userRole %>
